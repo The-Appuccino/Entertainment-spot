@@ -13,9 +13,9 @@
 9. Hydration Tracker
 
 ## Top 3 New App Ideas:
-1.Entertainment Spot
-2.Neaby Restaurants Finder
-3.
+1. Entertainment Spot
+2. Neaby Restaurants Finder
+3. Mood-based Playlist
 
 ## New App Ideas - Evaluate and Categorize
 1. Entertainment Spot
