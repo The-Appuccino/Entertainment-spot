@@ -16,3 +16,7 @@
     - **Habit:** Users would constantly use this app to keep track of favortite entertainment such as when new seasons of shows or movies that are out. In short they always in the the loop.
     - **Scope:** Version 1 would allow users to access a list of different entertainment and be able to create lists
  
+## New App Ideas
+1. Neaby Restaurants Finder - This app helps users find nearby restaurants based on their location, cuisine preferences, or budget.
+2. Fitness Tracker App - A fitness tracker app that allows users to log their workouts, set fitness goals, track calories burned, and monitor progress over time.
+3. Event Planner App - This app helps users plan and organize events such as birthdays, weddings, or conferences.
