@@ -13,8 +13,8 @@
 9. Hydration Tracker
 
 ## Top 3 New App Ideas:
-1.
-2.
+1.Entertainment Spot
+2.Neaby Restaurants Finder
 3.
 
 ## New App Ideas - Evaluate and Categorize
