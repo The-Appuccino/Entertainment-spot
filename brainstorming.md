@@ -21,7 +21,7 @@
 2. Fitness Tracker App - A fitness tracker app that allows users to log their workouts, set fitness goals, track calories burned, and monitor progress over time.
 3. Event Planner App - This app helps users plan and organize events such as birthdays, weddings, or conferences.
 
-** New App Ideas
+## New App Ideas
 1. Mood-based Playlist
 2. QR Scanner
 3. Hydration Tracker
