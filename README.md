@@ -25,41 +25,56 @@
 
 **Required Features**
 
-1. [fill in your required user features here]
-2. ...
-3. ...
+1. User can see Movies and TV shows as a list.
+2. User can create a personalized list based their favorite Movies/Tv shows.
+3. The user can search for their favorite movies and TV shows.
 
 **Optional Features**
 
-1. [fill in your optional user features here]
-2. ...
-3. ...
+1. User authentication (ability to create an account).
+2. User would have filtering options such as by Genre, Year, etc.
+3. A user can see the list of streaming platforms the Movie/TV show is available on.
+4. User can watch the trailer of whatever Movie/TV show.
 
 ### 2. Screen Archetypes
 
-- [list first screen here]
-  - [list associated required story here]
-  - ...
-- [list second screen here]
-  - [list associated required story here]
-  - ...
+- **Login Screen / Registration Screen:** User can log in if they have an existing account or register.
+
+- **Stream Screen:** Users can see a list of Movies and TV shows separated by a bottom app bar navigation ("Movies", "TV Shows").
+
+- Detail Screen: Users can see more information about clicked Movies/TV shows.
+
+- **Creation Screen:** Users can create lists to store Movies and TV shows.
+
+- Search Screen: Users can search for specific Movies/TV shows.
+
+- **Settings Screen:** Users can change things like app background theme ("Dark mode", "Light mode"), etc.
 
 ### 3. Navigation
 
 **Tab Navigation** (Tab to Screen)
 
-* [fill out your first tab]
-* [fill out your second tab]
-* [fill out your third tab]
+* Home Screen
+
+* Search icon
+
+* Personalized lists
 
 **Flow Navigation** (Screen to Screen)
 
-- [list first screen here]
-  - [list screen navigation here]
-  - ...
-- [list second screen here]
-  - [list screen navigation here]
-  - ...
+* Login/Register ⇒ Stream Screen (Home)
+
+* Stream Screen ⇒ Detail Screen
+
+* Detail Screen ⇒ None
+
+* Creation Screen ⇒ None
+
+* Search Screen ⇒ Detail Screen
+
+* Settings Screen ⇒ None
+
+* Profile Screen ⇒ Login/Register Screen if signed out
 
 ## Wireframes
 
