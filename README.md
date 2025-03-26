@@ -46,7 +46,7 @@
 
 - **Creation Screen:** Users can create lists to store Movies and TV shows.
 
-- Search Screen: Users can search for specific Movies/TV shows.
+- **Search Screen:** Users can search for specific Movies/TV shows.
 
 - **Settings Screen:** Users can change things like app background theme ("Dark mode", "Light mode"), etc.
 
