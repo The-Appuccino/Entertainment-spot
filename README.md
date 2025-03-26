@@ -78,7 +78,7 @@
 
 ## Wireframes
 
-[Add picture of your hand sketched wireframes in this section] <img src="https://github.com/The-Appuccino/Entertainment-spot/blob/main/WireFrames/Wireframe%20Version%201.png" width=600>
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/main/WireFrames/Wireframe%20Version%201.png" width=600>
 
 <br>
 
