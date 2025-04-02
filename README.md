@@ -85,7 +85,7 @@
 <br>
 
 ### [BONUS] Digital Wireframes & Mockups
-<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Wireframe%20Version%202(Figma).png" width=600>
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/entertainment%20spot%20Wireframe%202.png" width=600>
 
 ### [BONUS] Interactive Prototype
 
