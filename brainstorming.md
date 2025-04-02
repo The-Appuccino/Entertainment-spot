@@ -51,7 +51,7 @@
    - **Scope**: Version 1 asks for input about water intakes from users while comparing said data to daily intake of water and gives a report about user's water intake.
 
 
-## Final App Choosen:
+## Final App Idea Choosen:
  - **Entertainment Spot**
    
 ![image](https://github.com/user-attachments/assets/da83651d-ef12-4c09-a22d-50f4536e29f8)
