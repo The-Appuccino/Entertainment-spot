@@ -118,7 +118,9 @@ this section]
 [Add screenshot of your Project Board with the updated status of issues for Milestone 3. Note that these should include the updated issues you worked on for this sprint and not be a duplicate of Milestone 2 Project board.] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
 ## Completed user stories
-
+- As the user of this app, I want to access the list of movies I desire.
+- As a potential product sponsor, I want to have as many special features in this app as possible so it can attract more potential users.
+- As a developer, I want to see my app being used widely.
 - List the completed user stories from this unit
 - List any pending user stories / any user stories you decided to cut
 from the original requirements
