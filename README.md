@@ -93,6 +93,14 @@
 
 # Milestone 2 - Build Sprint 1 (Unit 8)
 
+## Completed user stories
+- [x] As the user of this app, I want to access the list of movies I desire.
+- [x] As a potential product sponsor, I want to have as many special features in this app as possible so it can attract more potential users.
+- [x] As a developer, I want to see my app being used widely.
+- [x] List the completed user stories from this unit
+- [x] List any pending user stories / any user stories you decided to cut
+from the original requirements
+
 ## GitHub Project board
 
 [Add screenshot of your Project Board with three milestones visible in
