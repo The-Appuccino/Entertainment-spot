@@ -105,17 +105,24 @@ from the original requirements
 
 [Add screenshot of your Project Board with three milestones visible in
 this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Project%20Board%201.png" width=600>
 
 ## Issue cards
 
-- [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-- [Add screenshot of your Project Board with the issues that you're working on in the **NEXT sprint**. It should include issues for next unit with assigned owners.] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+- [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] <img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Unit%208%20Completed.png" width=600>
+- [Add screenshot of your Project Board with the issues that you're working on in the **NEXT sprint**. It should include issues for next unit with assigned owners.]
+
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Assigned%20Issues(MileStone%203).png" width=600>
 
 ## Issues worked on this sprint
 
-- List the issues you completed this sprint
+- List the issues you completed this sprint:
+  * [x] Issues added to project and assigned to specific team members.
+  * [x] GitHub Issues created from user features.
+  * [x] GitHub Milestones created.
+  * [x] GitHub Project Board created  
 - [Add giphy that shows current build progress for Milestone 2. Note: We will be looking for progression of work between Milestone 2 and 3. Make sure your giphys are not duplicated and clearly show the change from Sprint 1 to 2.]
+<img src= 'https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Milestone%202.gif' title='Video Walkthrough' width='' alt='Video Walkthrough'/>
 
 <br>
 
