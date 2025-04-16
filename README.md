@@ -129,7 +129,7 @@ this section]
 # Milestone 3 - Build Sprint 2 (Unit 9)
 
 ## Note:
-We have mostly the xml layout structure generated but not the kotlin files such as adapters etc. We plan to ramp up progress throughout the next 3 weeks. So some of milestone 3's progress will now run concurrent with milestone 4. Thank you for you patience. 
+We have mostly the xml layout structure generated but not the kotlin files such as adapters etc. We plan to ramp up progress throughout the next 3 weeks. So some of milestone 3's progress will now run concurrent with milestone 4. Thank you for your patience. 
 ## GitHub Project board
 ![image](https://github.com/user-attachments/assets/17791330-7197-4a9c-bdef-932856823575)
 
