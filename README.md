@@ -78,13 +78,14 @@
 
 ## Wireframes
 
-[Add picture of your hand sketched wireframes in this section] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/main/WireFrames/Wireframe%20Version%201.png" width=600>
 
 <br>
 
 <br>
 
 ### [BONUS] Digital Wireframes & Mockups
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/entertainment%20spot%20Wireframe%202.png" width=600>
 
 ### [BONUS] Interactive Prototype
 
@@ -92,21 +93,36 @@
 
 # Milestone 2 - Build Sprint 1 (Unit 8)
 
+## Completed user stories
+- [x] As the user of this app, I want to access the list of movies I desire.
+- [x] As a potential product sponsor, I want to have as many special features in this app as possible so it can attract more potential users.
+- [x] As a developer, I want to see my app being used widely.
+- [x] List the completed user stories from this unit
+- [x] List any pending user stories / any user stories you decided to cut
+from the original requirements
+
 ## GitHub Project board
 
 [Add screenshot of your Project Board with three milestones visible in
 this section]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Project%20Board%201.png" width=600>
 
 ## Issue cards
 
-- [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-- [Add screenshot of your Project Board with the issues that you're working on in the **NEXT sprint**. It should include issues for next unit with assigned owners.] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+- [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] <img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Unit%208%20Completed.png" width=600>
+- [Add screenshot of your Project Board with the issues that you're working on in the **NEXT sprint**. It should include issues for next unit with assigned owners.]
+
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Assigned%20Issues(MileStone%203).png" width=600>
 
 ## Issues worked on this sprint
 
-- List the issues you completed this sprint
+- List the issues you completed this sprint:
+  * [x] Issues added to project and assigned to specific team members.
+  * [x] GitHub Issues created from user features.
+  * [x] GitHub Milestones created.
+  * [x] GitHub Project Board created  
 - [Add giphy that shows current build progress for Milestone 2. Note: We will be looking for progression of work between Milestone 2 and 3. Make sure your giphys are not duplicated and clearly show the change from Sprint 1 to 2.]
+<img src= 'https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Milestone%202.gif' title='Video Walkthrough' width='' alt='Video Walkthrough'/>
 
 <br>
 
@@ -117,7 +133,9 @@ this section]
 [Add screenshot of your Project Board with the updated status of issues for Milestone 3. Note that these should include the updated issues you worked on for this sprint and not be a duplicate of Milestone 2 Project board.] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
 ## Completed user stories
-
+- As the user of this app, I want to access the list of movies I desire.
+- As a potential product sponsor, I want to have as many special features in this app as possible so it can attract more potential users.
+- As a developer, I want to see my app being used widely.
 - List the completed user stories from this unit
 - List any pending user stories / any user stories you decided to cut
 from the original requirements
