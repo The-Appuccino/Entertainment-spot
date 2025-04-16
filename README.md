@@ -128,20 +128,13 @@ this section]
 
 # Milestone 3 - Build Sprint 2 (Unit 9)
 
+## Note:
+We have mostly the xml layout structure generated but not the kotlin files such as adapters etc. We plan to ramp up progress throughout the next 3 weeks. So some of milestone 3's progress will now run concurrent with milestone 4. Thank you for you patience. 
 ## GitHub Project board
-
-[Add screenshot of your Project Board with the updated status of issues for Milestone 3. Note that these should include the updated issues you worked on for this sprint and not be a duplicate of Milestone 2 Project board.] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-
-## Completed user stories
-- As the user of this app, I want to access the list of movies I desire.
-- As a potential product sponsor, I want to have as many special features in this app as possible so it can attract more potential users.
-- As a developer, I want to see my app being used widely.
-- List the completed user stories from this unit
-- List any pending user stories / any user stories you decided to cut
-from the original requirements
+![image](https://github.com/user-attachments/assets/17791330-7197-4a9c-bdef-932856823575)
 
 [Add video/gif of your current application that shows build progress]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/current%20stage.gif" width=600>
 
 ## App Demo Video
 
