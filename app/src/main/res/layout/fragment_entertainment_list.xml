@@ -15,7 +15,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
-        tools:context=".BestSellerBooksFragment"
+        tools:context=""
         tools:listitem="@layout/fragment_detail_entertainment_card" />
 
     <androidx.core.widget.ContentLoadingProgressBar
@@ -26,6 +26,5 @@
         android:layout_gravity="center"
         android:indeterminate="true"
         android:theme="@style/Widget.AppCompat.ProgressBar" />
-
 
 </FrameLayout>
