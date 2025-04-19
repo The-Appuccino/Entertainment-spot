@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".BlankFragment">
+    tools:context=".EntertainmentListFragment">
 
     <!-- TODO: Update blank fragment layout -->
 
@@ -16,7 +16,7 @@
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context=""
-        tools:listitem="@layout/fragment_detail_entertainment_card" />
+        tools:listitem="@layout/item_entertainment_list_card" />
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progress"
