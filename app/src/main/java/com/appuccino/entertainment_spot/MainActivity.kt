@@ -7,27 +7,34 @@ import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
+    // Fragments declared once for reuse
+    private val entertainmentListFragment = EntertainmentListFragment()
+    private val entertainmentDetailFragment = EntertainmentDetailFragment()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val fragmentManager: FragmentManager = supportFragmentManager
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
-        //fragments
-        val fragment1: Fragment = EntertainmentListFragment()
-        val fragment2: Fragment = EntertainmentDetailFragment()
+        // Set default fragment
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_host, entertainmentListFragment)
+            .commit()
 
-        val bottomNavigationView: BottomNavigationView = findViewById((R.id.bottom_navigation))
-
-        //handle navigation selection
         bottomNavigationView.setOnItemSelectedListener { item ->
-            lateinit var fragment: Fragment
-            when (item.itemId) {
-                R.id.nav_movies -> fragment = fragment1
-                R.id.nav_series -> fragment = fragment1
+            val selectedFragment: Fragment = when (item.itemId) {
+                R.id.nav_movies -> entertainmentListFragment
+                R.id.nav_series -> entertainmentListFragment // update if you add a separate fragment later
+                //R.id.nav_detail -> entertainmentDetailFragment
+                else -> entertainmentListFragment
             }
-            fragmentManager.beginTransaction().replace(R.id.)
-        }
 
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host, selectedFragment)
+                .commit()
+
+            true
+        }
     }
 }
