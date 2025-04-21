@@ -16,7 +16,7 @@
         android:layout_marginRight="16dp"
         app:layoutManager="LinearLayoutManager"
         tools:context=""
-        tools:listitem="@layout/item_entertainment_list_card" />
+        tools:listitem="@layout/item_entertainment_card" />
 
     <androidx.core.widget.ContentLoadingProgressBar
         android:id="@+id/progress"

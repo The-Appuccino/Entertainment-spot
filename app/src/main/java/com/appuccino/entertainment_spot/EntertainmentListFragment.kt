@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.recyclerview.widget.GridLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 
 // TODO: Rename parameter arguments, choose names that match
 // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -16,44 +18,32 @@ private const val ARG_PARAM2 = "param2"
  * Use the [EntertainmentListFragment.newInstance] factory method to
  * create an instance of this fragment.
  */
-class EntertainmentListFragment : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
+class EntertainmentListFragment : Fragment(R.layout.fragment_entertainment_list) {
+    private lateinit var recyclerView: RecyclerView
+    private  lateinit var adapter: EntertainmentAdapter
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        recyclerView = view.findViewById(R.id.list)
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // cards displayed with 2 colunms
+
+        val sampleItems = listOf(
+            EntertainmentItem("Atlas", R.drawable.atlas, 5.6f),
+            EntertainmentItem("Godzila x Kong: The New Empire", R.drawable.godzila, 6.0f),
+            EntertainmentItem("Godzila x Kong: The New Empire", R.drawable.bad_boys, 6.5f)
+        )
+
+        adapter = EntertainmentAdapter(sampleItems) { selectedItem ->
+            //Navigate to detail screen
+            val fragment = EntertainmentDetailFragment.newInstance(selectedItem)
+            parentFragmentManager.beginTransaction()
+                .replace(R.id.nav_host, fragment)
+                .addToBackStack(null)
+                .commit()
         }
-    }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.item_entertainment_list_card, container, false)
-    }
+        recyclerView.adapter = adapter
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment EntertainmentListFragment.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            EntertainmentListFragment().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
-            }
     }
 }
