@@ -32,8 +32,9 @@ class EntertainmentDetailFragment: Fragment(R.layout.fragment_entertainment_deta
         val imageRes = arguments?.getInt(ARG_IMAGE)
         val rating = arguments?.getFloat(ARG_RATING)
 
-        view.findViewById<TextView>(R.id.textView).text = title
-        view.findViewById<ImageView>(R.id.imageView2).setImageResource(imageRes ?: 0)
-        view.findViewById<TextView>(R.id.textView2).text = rating.toString()
+        view.findViewById<TextView>(R.id.titleTextView).text = title
+        view.findViewById<ImageView>(R.id.posterImageView).setImageResource(imageRes ?: 0)
+        view.findViewById<ImageView>(R.id.backgroundImageView).setImageResource(imageRes ?: 0)
+        view.findViewById<TextView>(R.id.ratingTextView).text = rating.toString()
     }
 }

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_movies -> entertainmentListFragment
                 R.id.nav_series -> entertainmentListFragment // update if you add a separate fragment later
                 //R.id.nav_detail -> entertainmentDetailFragment
-                else -> entertainmentListFragment
+                else -> entertainmentDetailFragment
             }
 
             supportFragmentManager.beginTransaction()
