@@ -17,11 +17,13 @@
 
         <!-- Title -->
 
+        <!-- Icons Row -->
+
         <ImageView
             android:id="@+id/backgroundImageView"
             android:layout_width="412dp"
             android:layout_height="208dp"
-            android:alpha="0.10"
+            android:alpha="0.60"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.515"
@@ -29,14 +31,14 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
 
-        <!-- Icons Row -->
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/posterImageView"
             android:layout_width="130dp"
             android:layout_height="180dp"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="28dp"
             android:scaleType="centerCrop"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:shapeAppearanceOverlay="@style/RoundedCornerImage"
@@ -57,7 +59,46 @@
             app:layout_constraintTop_toBottomOf="@id/posterImageView" />
 
         <LinearLayout
-            android:id="@+id/iconsRow"
+            android:id="@+id/iconsRow1"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/backgroundImageView">
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:alpha="1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/circle_background"
+                android:contentDescription="Back"
+                android:padding="8dp"
+                android:src="@drawable/ic_outline_arrow_circle_left_24"
+                app:tint="@android:color/black" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:layout_weight="1" />
+
+            <ImageButton
+                android:id="@+id/bookmarkButton"
+                android:alpha="1"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/circle_background"
+                android:contentDescription="Bookmark"
+                android:padding="8dp"
+                android:src="@drawable/ic_baseline_bookmark_border_24"
+                app:tint="@android:color/black" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/iconsRow2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
@@ -116,7 +157,7 @@
             android:textSize="16sp"
             android:textStyle="bold"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/iconsRow" />
+            app:layout_constraintTop_toBottomOf="@id/iconsRow2" />
 
         <!-- Summary -->
         <TextView

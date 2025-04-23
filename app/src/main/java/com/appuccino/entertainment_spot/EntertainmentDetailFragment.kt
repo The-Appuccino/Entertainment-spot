@@ -17,7 +17,7 @@ class EntertainmentDetailFragment: Fragment(R.layout.fragment_entertainment_deta
             val args = Bundle().apply {
                 putString(ARG_TITLE, item.title)
                 putInt(ARG_IMAGE, item.imageResId)
-                putFloat(ARG_RATING, item.rating)
+                putFloat(ARG_RATING, item.imdbRating)
             }
             return EntertainmentDetailFragment().apply {
                 arguments = args

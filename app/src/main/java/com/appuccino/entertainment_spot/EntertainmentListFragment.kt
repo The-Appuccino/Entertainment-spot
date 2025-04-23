@@ -26,12 +26,18 @@ class EntertainmentListFragment : Fragment(R.layout.fragment_entertainment_list)
         super.onViewCreated(view, savedInstanceState)
 
         recyclerView = view.findViewById(R.id.list)
-        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2) // cards displayed with 2 colunms
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 3) // cards displayed with 2 colunms
 
         val sampleItems = listOf(
             EntertainmentItem("Atlas", R.drawable.atlas, 5.6f),
             EntertainmentItem("Godzila x Kong: The New Empire", R.drawable.godzila, 6.0f),
-            EntertainmentItem("Godzila x Kong: The New Empire", R.drawable.bad_boys, 6.5f)
+            EntertainmentItem("Bad Boys: Ride or Die", R.drawable.bad_boys, 6.5f),
+            EntertainmentItem("Sinners", R.drawable.sinners, 8.2f),
+            EntertainmentItem("Thor: Ragnarok ", R.drawable.thor, 7.9f),
+            EntertainmentItem("Man Of Steel", R.drawable.man_of_steel, 7.1f),
+            EntertainmentItem("The Dark Knight", R.drawable.dark_knight, 9.0f)
+
+
         )
 
         adapter = EntertainmentAdapter(sampleItems) { selectedItem ->
