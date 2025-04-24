@@ -33,7 +33,7 @@ class EntertainmentAdapter(
         val item = items[position]
         holder.titleText.text = item.title
         holder.imageView.setImageResource(item.imageResId)
-        holder.ratingText.text = item.rating.toString()
+        holder.ratingText.text = item.imdbRating.toString()
 
         holder.container.setOnClickListener {
             onItemClick(item)

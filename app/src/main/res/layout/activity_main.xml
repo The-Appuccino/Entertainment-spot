@@ -18,6 +18,7 @@
         android:layout_width="408dp"
         android:layout_height="642dp"
         app:defaultNavHost="true"
+        android:background="@color/black"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

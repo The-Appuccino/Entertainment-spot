@@ -36,8 +36,6 @@ class EntertainmentListFragment : Fragment(R.layout.fragment_entertainment_list)
             EntertainmentItem("Thor: Ragnarok ", R.drawable.thor, 7.9f),
             EntertainmentItem("Man Of Steel", R.drawable.man_of_steel, 7.1f),
             EntertainmentItem("The Dark Knight", R.drawable.dark_knight, 9.0f)
-
-
         )
 
         adapter = EntertainmentAdapter(sampleItems) { selectedItem ->
