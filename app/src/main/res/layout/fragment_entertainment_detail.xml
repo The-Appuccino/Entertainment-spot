@@ -76,8 +76,8 @@
                 android:background="@drawable/circle_background"
                 android:contentDescription="Back"
                 android:padding="8dp"
-                android:src="@drawable/ic_outline_arrow_circle_left_24"
-                app:tint="@android:color/black" />
+                android:src="@drawable/ic_outline_arrow_back_24"
+                 />
 
             <View
                 android:layout_width="0dp"
@@ -93,7 +93,7 @@
                 android:contentDescription="Bookmark"
                 android:padding="8dp"
                 android:src="@drawable/ic_baseline_bookmark_border_24"
-                app:tint="@android:color/black" />
+                />
         </LinearLayout>
 
 
