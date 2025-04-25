@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/black"
     tools:context=".EntertainmentSearchFragment">
 
     <!-- Search Input Field -->
@@ -24,6 +25,7 @@
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/textInputEditText"
+            android:background="@color/white"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:paddingStart="50dp"/>
@@ -46,6 +48,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textStyle="bold"
+            android:backgroundTint="@color/Cool_black"
             android:text="Movies" />
 
         <View
@@ -58,6 +62,8 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:textStyle="bold"
+            android:backgroundTint="@color/Cool_black"
             android:text="TV Shows" />
     </LinearLayout>
 
