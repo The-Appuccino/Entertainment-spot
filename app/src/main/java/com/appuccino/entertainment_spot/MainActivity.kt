@@ -2,30 +2,39 @@ package com.appuccino.entertainment_spot
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navigationView: NavigationView
-    private lateinit var toolbar: androidx.appcompat.widget.Toolbar
-    private lateinit var toggle: ActionBarDrawerToggle
+    // Fragments declared once for reuse
+    //private val entertainmentListFragment = EntertainmentListFragment()
+    private val entertainmentDetailFragment = EntertainmentDetailFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        initializeMenu()
-    }
 
-    private fun initializeMenu() {
-        drawerLayout = findViewById(R.id.drawer_layout)
-        navigationView = findViewById(R.id.navigation_view)
-        toolbar = findViewById(R.id.toolbar)
-        setSupportActionBar(toolbar)
-        toggle = ActionBarDrawerToggle(this, drawerLayout, toolbar,
-            R.string.navigation_drawer_open, R.string.navigation_drawer_close)
-        drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+        val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
+
+        // Set default fragment
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.nav_host, EntertainmentListFragment.newInstance(EntertainmentListFragment.TYPE_MOVIE))
+            .commit()
+
+        bottomNavigationView.setOnItemSelectedListener { item ->
+            val selectedFragment: Fragment = when (item.itemId) {
+                R.id.nav_movies -> EntertainmentListFragment.newInstance(EntertainmentListFragment.TYPE_MOVIE)
+                R.id.nav_series -> EntertainmentListFragment.newInstance(EntertainmentListFragment.TYPE_SERIES) // update if you add a separate fragment later
+                //R.id.nav_detail -> entertainmentDetailFragment
+                else -> entertainmentDetailFragment
+            }
+
+            supportFragmentManager.beginTransaction()
+                .replace(R.id.nav_host, selectedFragment)
+                .commit()
+
+            true
+        }
     }
 }
