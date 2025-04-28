@@ -8,6 +8,7 @@ interface EntertainmentItem {
 
 
 // Movie
+
 data class Movie(
     override val title: String,
     override val imageResId: Int,
