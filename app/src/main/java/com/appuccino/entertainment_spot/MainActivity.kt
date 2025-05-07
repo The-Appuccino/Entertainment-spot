@@ -3,7 +3,6 @@ package com.appuccino.entertainment_spot
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
 import com.google.android.material.bottomnavigation.BottomNavigationView
 
 class MainActivity : AppCompatActivity() {
@@ -27,6 +26,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_movies -> EntertainmentListFragment.newInstance(EntertainmentListFragment.TYPE_MOVIE)
                 R.id.nav_series -> EntertainmentListFragment.newInstance(EntertainmentListFragment.TYPE_SERIES) // update if you add a separate fragment later
                 //R.id.nav_detail -> entertainmentDetailFragment
+                R.id.nav_favorite_list -> EntertainmentFavoritesFragment.newInstance()
                 else -> entertainmentDetailFragment
             }
 
