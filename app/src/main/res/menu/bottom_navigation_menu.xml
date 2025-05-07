@@ -22,6 +22,13 @@
         />
 
     <item
+        android:id="@+id/nav_search"
+        android:enabled="true"
+        android:icon="@drawable/ic_baseline_search_24"
+        android:title="Search"
+        />
+
+    <item
         android:id="@+id/nav_settings"
         android:enabled="true"
         android:icon="@drawable/ic_baseline_settings_24"
