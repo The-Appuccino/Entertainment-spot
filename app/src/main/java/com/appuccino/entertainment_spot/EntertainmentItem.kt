@@ -1,6 +1,9 @@
 package com.appuccino.entertainment_spot
 
-interface EntertainmentItem {
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+interface EntertainmentItem : Parcelable {
     val title: String
     val imageResId: Int
     val imdbRating: Float
@@ -8,6 +11,7 @@ interface EntertainmentItem {
 
 
 // Movie
+@Parcelize
 data class Movie(
     override val title: String,
     override val imageResId: Int,
@@ -27,6 +31,7 @@ data class Movie(
 ) : EntertainmentItem
 
 // Series
+@Parcelize
 data class Series(
     override val title: String,
     override val imageResId: Int,
