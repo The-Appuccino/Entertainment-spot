@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "162346875013",
+    "project_id": "entertainmentspotdb",
+    "storage_bucket": "entertainmentspotdb.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:162346875013:android:380a57f47360bdad4191ec",
+        "android_client_info": {
+          "package_name": "com.appuccino.entertainment_spot"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBWKXk6KFebFB9GMEu5JuefZG_ZFTDhkxY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,2 @@
+- Each team member should create thier on branch. Example: `yourname-feature-branch`
+- Each team member should create pull request to the `build-branch`
