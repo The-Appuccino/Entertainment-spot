@@ -123,7 +123,7 @@ this section]
   * [x] GitHub Project Board created  
 
 ## Gif
-  <img src="" width=600>
+  <img src="https://github.com/The-Appuccino/Entertainment-spot/blob/omoze-feature-branch-2/WireFrames/List%20Screen.gif" width=600>
 
 <br>
 
@@ -141,7 +141,7 @@ this section]
   - [X] Search screen view created. But the actual logic searching with text and voice has been pushed to future sprint. 
 
 [current build progress]
-<img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/omoze-feature-branch-2/WireFrames/vid.gif" width=600>
 
 ## App Demo Video
 
