@@ -108,6 +108,13 @@ this section]
 - List the issues you completed this sprint
 - [Add giphy that shows current build progress for Milestone 2. Note: We will be looking for progression of work between Milestone 2 and 3. Make sure your giphys are not duplicated and clearly show the change from Sprint 1 to 2.]
 
+## Completed user stories
+
+  - [x] User can see a list of movies/series
+
+## Gif
+  <img src="" width=600>
+
 <br>
 
 # Milestone 3 - Build Sprint 2 (Unit 9)
@@ -118,11 +125,12 @@ this section]
 
 ## Completed user stories
 
-- List the completed user stories from this unit
-- List any pending user stories / any user stories you decided to cut
-from the original requirements
+  - [x] User can see a list of movies/series
+  - [x] User can view more details about an entertainment item such as the audience rating, release dat, runtime or number of seasons available, see the cast with the character names they play and watch the trailer for said entertainment item.
+  - [x] User can add to list. Note: this is in a separate branch and not integrated with the first two user stories.
+  - [X] Search screen view created. But the actual logic searching with text and voice has been pushed to future sprint. 
 
-[Add video/gif of your current application that shows build progress]
+[current build progress]
 <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
 
 ## App Demo Video

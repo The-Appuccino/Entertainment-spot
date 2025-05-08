@@ -14,7 +14,7 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:hint="Search movies/series"
-        app:startIconDrawable="@drawable/ic_outline_search_24"
+        app:startIconDrawable="@drawable/ic_baseline_black_search_24"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/ic_outline_keyboard_voice_24"
         app:boxBackgroundMode="outline"
