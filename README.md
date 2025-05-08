@@ -104,8 +104,10 @@ this section]
 
 ## Issue cards
 
-- [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
-- [Add screenshot of your Project Board with the issues that you're working on in the **NEXT sprint**. It should include issues for next unit with assigned owners.] <img src="YOUR_WIREFRAME_IMAGE_URL" width=600>
+- [Add screenshot of your Project Board with the issues that you've been working on for this unit's milestone] <img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Unit%208%20Completed.png" width=600>
+- [Add screenshot of your Project Board with the issues that you're working on in the **NEXT sprint**. It should include issues for next unit with assigned owners.]
+
+<img src="https://github.com/The-Appuccino/Entertainment-spot/blob/build-branch/WireFrames/Assigned%20Issues(MileStone%203).png" width=600>
 
 ## Issues cards
 
@@ -134,7 +136,6 @@ this section]
 ![image](https://github.com/user-attachments/assets/17791330-7197-4a9c-bdef-932856823575)
 
 ## Completed user stories
-
   - [x] User can see a list of movies/series
   - [x] User can view more details about an entertainment item such as the audience rating, release dat, runtime or number of seasons available, see the cast with the character names they play and watch the trailer for said entertainment item.
   - [x] User can add to list. Note: this is in a separate branch and not integrated with the first two user stories.
