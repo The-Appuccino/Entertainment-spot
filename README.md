@@ -145,4 +145,4 @@ this section]
 
 ## App Demo Video
 
-- Embed the YouTube/Vimeo link of your Completed Demo Day prep video
+- https://drive.google.com/file/d/1_O-g6dV-RebFOnUmNHTan28iWOsWI_Hw/view?usp=drive_link
