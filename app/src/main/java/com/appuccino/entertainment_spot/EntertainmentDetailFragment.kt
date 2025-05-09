@@ -2,6 +2,7 @@ package com.appuccino.entertainment_spot
 
 import android.os.Bundle
 import android.view.View
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.fragment.app.Fragment
@@ -62,6 +63,11 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
         val durationTextView = view.findViewById<TextView>(R.id.durationTextView)
         val releaseDateTextView = view.findViewById<TextView>(R.id.releaseDateTextView)
         val summaryTextView = view.findViewById<TextView>(R.id.summaryTextView)
+
+        val backButton = view.findViewById<ImageButton>(R.id.backButton)
+        backButton.setOnClickListener{
+            requireActivity().onBackPressedDispatcher.onBackPressed()
+        }
 
         arguments?.getString(ARG_MOVIE)?.let { json ->
             val movie = Json.decodeFromString<Movie>(json)

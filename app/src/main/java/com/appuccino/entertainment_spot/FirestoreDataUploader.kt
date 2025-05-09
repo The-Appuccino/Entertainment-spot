@@ -61,7 +61,7 @@ object FirestoreDataUploader {
                 } ?: emptyList()
 
                 val genreNames = details.genres
-                val topCast = credits.cast.take(5)
+                val topCast = credits.cast.take(8)
 
                 val enrichedMovie = Movie(
                     tmdbId = details.tmdbId,
@@ -130,7 +130,7 @@ object FirestoreDataUploader {
                 } ?: emptyList()
 
                 val genreNames = details.genres
-                val topCast = credits.cast.take(5)
+                val topCast = credits.cast.take(8)
 
                 val enrichedSeries = Series(
                     tmdbId = details.tmdbId,
