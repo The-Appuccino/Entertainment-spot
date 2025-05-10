@@ -5,9 +5,9 @@ import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface WatchmodeApiService {
-    @GET("search/title")
+    @GET("search/")
     suspend fun searchByTmdbId(
-        @Query("search_field") field: String = "tmdb_id",
+        @Query("search_field") field: String,
         @Query("search_value") tmdbId: Int,
         @Query("types") types: String = "movie,tv",
         @Query("apiKey") apiKey: String

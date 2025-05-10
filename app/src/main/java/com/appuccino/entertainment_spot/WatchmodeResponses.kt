@@ -11,6 +11,7 @@ data class WatchmodeSearchResult(
 
 @Serializable
 data class WatchmodeSearchResponse(
+    @SerialName("title_results")
     val titleResults: List<WatchmodeSearchResult> = emptyList()
 )
 
@@ -18,7 +19,7 @@ data class WatchmodeSearchResponse(
 data class WatchmodeTitleDetailsResponse(
     @SerialName("user_rating") val imdbRating: Double?,
     @SerialName("critic_score") val criticScore: Double?,
-    val usRating: String? // MPAA-style rating like PG-13
+    //val usRating: String? // MPAA-style rating like PG-13
 )
 
 @Serializable

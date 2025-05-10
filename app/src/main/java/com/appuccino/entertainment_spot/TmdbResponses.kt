@@ -54,6 +54,17 @@ data class ReleaseDateResponse(
 )
 
 @Serializable
+data class MovieDetailResponse(
+    @SerialName("id") val tmdbId: Int,
+    @SerialName("original_title") val title: String,
+    @SerialName("overview") val overview: String,
+    @SerialName("poster_path") val posterUrl: String = "",
+    @SerialName("release_date") val releaseDate: String = "",
+    @SerialName("runtime") val runtime: Int = 0,
+    val genres: List<Genre> = emptyList()
+)
+
+@Serializable
 data class SeriesDetailResponse(
     @SerialName("id") val tmdbId: Int,
     @SerialName("name") val name: String,
@@ -66,5 +77,5 @@ data class SeriesDetailResponse(
 
 
 //defined in EnntertainmentItem.kt
-typealias MovieDetailResponse = Movie
+//typealias MovieDetailResponse = Movie
 //typealias SeriesDetailResponse = Series

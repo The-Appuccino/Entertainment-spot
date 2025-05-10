@@ -45,14 +45,22 @@ object FirestoreDataUploader {
                 //Watchmode
 //                val rawSearchResponse = watchmode.searchByTmdbId(movieId.toString(), WATCHMODE_API_KEY)
 //                Log.d(TAG, "Raw watchmode response: $rawSearchResponse")
-                val watchSearch = watchmode.searchByTmdbId(tmdbId = movieId, apiKey = WATCHMODE_API_KEY)
+                val watchSearch = watchmode.searchByTmdbId(
+                    field = "tmdb_movie_id",
+                    tmdbId = movieId,
+                    apiKey = WATCHMODE_API_KEY
+                )
                 val wmResult = watchSearch.titleResults.firstOrNull()
                 val imdbId = wmResult?.imdbId
                 val watchmodeId = wmResult?.watchmodeId
+                Log.d(TAG, "Watchmode ID: $watchmodeId")
 
                 val imdbRating = watchmodeId?.let { id: Int ->
-                    watchmode.getWatchmodeTitleDetails(id, WATCHMODE_API_KEY).imdbRating
+                    val details = watchmode.getWatchmodeTitleDetails(id, WATCHMODE_API_KEY)
+                    Log.d(TAG, "Watchmode Details Response: $details")
+                    details.imdbRating
                 }
+                Log.d(TAG, "Final imdbRating: ${imdbRating}")
 
                 val streamingPlatforms = watchmodeId?.let { id: Int ->
                     watchmode.getWatchmodeSources(id, WATCHMODE_API_KEY)
@@ -61,7 +69,7 @@ object FirestoreDataUploader {
                 } ?: emptyList()
 
                 val genreNames = details.genres
-                val topCast = credits.cast.take(5)
+                val topCast = credits.cast.take(8)
 
                 val enrichedMovie = Movie(
                     tmdbId = details.tmdbId,
@@ -114,7 +122,12 @@ object FirestoreDataUploader {
                 }?.key
                 val trailerUrl = trailerKey?.let { key: String -> "https://www.youtube.com/watch?v=$key" }
 
-                val watchSearch = watchmode.searchByTmdbId(tmdbId = seriesId, apiKey = WATCHMODE_API_KEY)
+                val watchSearch = watchmode.searchByTmdbId(
+                    field = "tmdb_tv_id",
+                    tmdbId = seriesId,
+                    apiKey = WATCHMODE_API_KEY
+                )
+
                 val wmResult = watchSearch.titleResults.firstOrNull()
                 val imdbId = wmResult?.imdbId
                 val watchmodeId = wmResult?.watchmodeId
@@ -130,7 +143,7 @@ object FirestoreDataUploader {
                 } ?: emptyList()
 
                 val genreNames = details.genres
-                val topCast = credits.cast.take(5)
+                val topCast = credits.cast.take(8)
 
                 val enrichedSeries = Series(
                     tmdbId = details.tmdbId,
