@@ -46,7 +46,7 @@ object FirestoreDataUploader {
 //                val rawSearchResponse = watchmode.searchByTmdbId(movieId.toString(), WATCHMODE_API_KEY)
 //                Log.d(TAG, "Raw watchmode response: $rawSearchResponse")
                 val watchSearch = watchmode.searchByTmdbId(
-                    field = "tmdb_movie_id", // ✅ use correct field
+                    field = "tmdb_movie_id",
                     tmdbId = movieId,
                     apiKey = WATCHMODE_API_KEY
                 )
@@ -123,7 +123,7 @@ object FirestoreDataUploader {
                 val trailerUrl = trailerKey?.let { key: String -> "https://www.youtube.com/watch?v=$key" }
 
                 val watchSearch = watchmode.searchByTmdbId(
-                    field = "tmdb_tv_id", // ✅ use correct field
+                    field = "tmdb_tv_id",
                     tmdbId = seriesId,
                     apiKey = WATCHMODE_API_KEY
                 )
