@@ -97,6 +97,20 @@
         </LinearLayout>
 
 
+        <TextView
+            android:id="@+id/genreTextView"
+            android:layout_width="298dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="4dp"
+            android:text="Action, Adventure, Sci-Fi"
+            android:textAlignment="center"
+            android:textColor="@android:color/white"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/titleTextView" />
+
         <LinearLayout
             android:id="@+id/iconsRow2"
             android:layout_width="wrap_content"
@@ -106,7 +120,7 @@
             android:orientation="horizontal"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/titleTextView">
+            app:layout_constraintTop_toBottomOf="@id/genreTextView">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -192,12 +206,34 @@
             android:clipToPadding="false"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            app:layout_constraintBottom_toTopOf="@+id/youtubePlayerView"
+            app:layout_constraintBottom_toTopOf="@+id/streamTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/actorsLabelTextView"
             tools:listitem="@layout/item_entertainment_cast" />
 
+        <!-- Streaming Platform availability -->
+
+        <TextView
+            android:id="@+id/streamTitle"
+            android:layout_width="96dp"
+            android:layout_height="23dp"
+            android:text="Available on"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@+id/platformName"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/platformName"
+            android:layout_width="404dp"
+            android:layout_height="41dp"
+            android:text="TextView"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toTopOf="@+id/youtubePlayerView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent" />
 
         <com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
             android:id="@+id/youtubePlayerView"
@@ -206,9 +242,9 @@
             app:autoPlay="false"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             tools:ignore="MissingConstraints" />
-        /
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

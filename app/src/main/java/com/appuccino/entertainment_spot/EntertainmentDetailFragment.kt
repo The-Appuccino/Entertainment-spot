@@ -63,6 +63,8 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
         val durationTextView = view.findViewById<TextView>(R.id.durationTextView)
         val releaseDateTextView = view.findViewById<TextView>(R.id.releaseDateTextView)
         val summaryTextView = view.findViewById<TextView>(R.id.summaryTextView)
+        val genreTextView = view.findViewById<TextView>(R.id.genreTextView)
+        val platformNames = view.findViewById<TextView>(R.id.platformName)
 
         val backButton = view.findViewById<ImageButton>(R.id.backButton)
         backButton.setOnClickListener{
@@ -73,10 +75,14 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
             val movie = Json.decodeFromString<Movie>(json)
             titleTextView.text = movie.title
             //ratingTextView.text = movie.imdbRating?.toString() ?: "N/A"
+            genreTextView.text = movie.genres.joinToString(", ") { it.name}
             summaryTextView.text = movie.overview
             durationTextView.text = "${movie.runtime} min"
             ratingTextView.text = movie.audienceRating
             releaseDateTextView.text = formatDate(movie.releaseDate)
+            platformNames.text = movie.streamingPlatforms
+                .take(6) // Get first 6 items safely, even if list has fewer
+                .joinToString(", ")
 
             val baseUrl = "https://image.tmdb.org/t/p/w500"
             Glide.with(this).load(baseUrl + movie.posterUrl).into(posterImageView)
@@ -100,11 +106,15 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
         arguments?.getString(ARG_SERIES)?.let { json ->
             val series = Json.decodeFromString<Series>(json)
             titleTextView.text = series.name
-            ratingTextView.text = series.imdbRating?.toString() ?: "N/A"
+            //ratingTextView.text = series.imdbRating?.toString() ?: "N/A"
+            genreTextView.text = series.genres.joinToString(", ") { it.name}
             summaryTextView.text = series.overview
             durationTextView.text = "${series.numberOfSeasons} seasons"
             ratingTextView.text = series.audienceRating
             releaseDateTextView.text = formatDate(series.firstAirDate)
+            platformNames.text = series.streamingPlatforms
+                .take(6) // Get first 6 items safely, even if list has fewer
+                .joinToString(", ")
 
             val baseUrl = "https://image.tmdb.org/t/p/w500"
             Glide.with(this).load(baseUrl + series.posterUrl).into(posterImageView)
