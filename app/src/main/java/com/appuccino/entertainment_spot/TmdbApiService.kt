@@ -9,14 +9,14 @@ interface TmdbApiService {
     suspend fun getPopularMovies(
         @Query("api_key") apiKey: String,
         @Query("language") language: String = "en-US",
-        @Query("page") page: Int = 1
+        @Query("page") page: Int
     ): MovieBriefListResponse
 
     @GET("tv/popular")
     suspend fun getPopularSeries(
         @Query("api_key") apiKey: String,
         @Query("language") language: String = "en-US",
-        @Query("page") page: Int = 1
+        @Query("page") page: Int
     ): SeriesBriefListResponse
 
     @GET("movie/{movie_id}")

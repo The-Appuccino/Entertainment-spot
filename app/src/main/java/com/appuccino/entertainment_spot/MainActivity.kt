@@ -18,10 +18,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         // Run once on startup
-        lifecycleScope.launch {
-            FirestoreDataUploader.uploadPopularMovies()
-            FirestoreDataUploader.uploadPopularSeries()
-        }
+//        lifecycleScope.launch {
+//            FirestoreDataUploader.uploadPopularMovies()
+//            FirestoreDataUploader.uploadPopularSeries()
+//        }
 
 
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
