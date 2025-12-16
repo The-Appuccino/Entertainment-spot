@@ -9,6 +9,11 @@ import com.google.firebase.firestore.FirebaseFirestore
 import kotlinx.coroutines.*
 import androidx.lifecycle.lifecycleScope
 
+/**
+ * Displays either Movies or Series in a 3-column grid. Reads from Firestore (movies or series collections),
+ * sets the correct adapter, and navigates to "EntertainmentDetailFragment" on item click.
+ **/
+
 class EntertainmentListFragment : Fragment(R.layout.fragment_entertainment_list) {
     private lateinit var recyclerView: RecyclerView
     private val db = FirebaseFirestore.getInstance()

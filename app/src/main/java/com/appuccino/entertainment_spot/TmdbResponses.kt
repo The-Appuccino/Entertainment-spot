@@ -3,6 +3,12 @@ package com.appuccino.entertainment_spot
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Additional TMDb response models (genres, list wrappers, credits, videos,
+ * release-date/certification responses, and “detail response” DTOs).
+ * These support TmdbApiService + uploader enrichment.
+ *
+ **/
 @Serializable
 data class Genre(
     val id: Int = 0,

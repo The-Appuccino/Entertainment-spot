@@ -5,6 +5,11 @@ import kotlinx.serialization.json.Json
 import okhttp3.MediaType.Companion.toMediaType
 import retrofit2.Retrofit
 
+/**
+ * Central Retrofit setup: creates two Retrofit services using
+ * Kotlinx Serialization (ignoreUnknownKeys=true), one for TMDb and one for Watchmode.
+ *
+ **/
 object RetrofitClient {
 
     private const val TMDB_BASE_URL = "https://api.themoviedb.org/3/"

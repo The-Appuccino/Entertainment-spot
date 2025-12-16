@@ -8,6 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
+/**
+ * RecyclerView adapter for Movie cards: binds title, IMDb rating text,
+ * poster image (TMDb image base URL + posterUrl), and forwards clicks via callback.
+ * Uses "item_entertainment_card.xml".
+ **/
+
 class EntertainmentMovieAdapter(
     private val movies: List<Movie>,
     private val onItemClick: (Movie) -> Unit

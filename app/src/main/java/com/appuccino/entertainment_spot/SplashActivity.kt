@@ -8,6 +8,12 @@ import androidx.lifecycle.lifecycleScope
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
+/**
+ * Launch splash screen, waits ~2 seconds via coroutine,
+ * then starts MainActivity and finishes the splash so the user can’t navigate back to it.
+ *
+ **/
+
 class SplashActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

@@ -8,6 +8,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
 
+
+/**
+ * Horizontal “cast carousel” adapter: binds cast headshot (TMDb w185), actor name,
+ * and character name using ShapeableImageView + "item_entertainment_cast.xml".
+ **/
+
 class EntertainmentCastAdapter(
     private val cast: List<CastMember>
 ) : RecyclerView.Adapter<EntertainmentCastAdapter.CastViewHolder>() {

@@ -7,6 +7,13 @@ import kotlinx.coroutines.withContext
 //import com.appuccino.entertainment_spot.BuildConfig
 
 
+/**
+ * Background “data seeder/enricher”: fetches popular movies/series from TMDb (paged),
+ * fetches details/credits/videos/release dates, then enriches with
+ * Watchmode (IMDb ID/rating + streaming platforms), and uploads enriched Movie/Series documents
+ * into Firestore collections (movies, series).
+ **/
+
 object FirestoreDataUploader {
 
     private const val TAG = "FirestoreUploader"
@@ -32,7 +39,7 @@ object FirestoreDataUploader {
                     val videos = tmdb.getMovieVideos(movieId, TMDB_API_KEY)
                     val releaseDates = tmdb.getMovieReleaseDates(movieId, TMDB_API_KEY)
 
-                    val trailerKey: String? = videos.results.firstOrNull { video: com.appuccino.entertainment_spot.VideoResult ->
+                    val trailerKey: String? = videos.results.firstOrNull { video: VideoResult ->
                         video.site == "YouTube" && video.type == "Trailer"
                     }?.key
                     val trailerUrl = trailerKey?.let { key: String -> "https://www.youtube.com/watch?v=$key" }
@@ -65,7 +72,7 @@ object FirestoreDataUploader {
 
                     val streamingPlatforms = watchmodeId?.let { id: Int ->
                         watchmode.getWatchmodeSources(id, WATCHMODE_API_KEY)
-                            .map { source: com.appuccino.entertainment_spot.WatchmodeSource -> source.name }
+                            .map { source: WatchmodeSource -> source.name }
                             .distinct()
                     } ?: emptyList()
 

@@ -8,6 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 
+/**
+ * RecyclerView adapter for Series cards: same as movie adapter
+ * but binds series.name and series.posterUrl, plus IMDb rating.
+ * Uses "item_entertainment_card.xml".
+ **/
+
 class EntertainmentSeriesAdapter(
     private val seriesList: List<Series>,
     private val onItemClick: (Series) -> Unit

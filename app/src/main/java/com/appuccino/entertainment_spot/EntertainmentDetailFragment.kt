@@ -17,6 +17,13 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
+
+/**
+ *Detail screen for either a Movie or Series. Receives the object via JSON args (ARG_MOVIE / ARG_SERIES),
+ * populates UI (title, genre, summary, runtime/seasons, rating, release date, platforms),
+ * shows cast in a horizontal RecyclerView, and cues the YouTube trailer.
+ **/
+
 class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_detail) {
     private fun formatDate(isoDate: String): String {
         return try {

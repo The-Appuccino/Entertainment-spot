@@ -3,6 +3,15 @@ package com.appuccino.entertainment_spot
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+
+/**
+ * Your core data models:
+ * TmdbMovieBrief / TmdbSeriesBrief for list results
+ * CastMember
+ * Full Movie and Series models used in Firestore + detail UI (cast, genres, runtime/seasons, ratings, trailer, streaming platforms).
+ *
+ **/
+
 //interface EntertainmentItem {
 //    val title: String
 //    val imageResId: Int

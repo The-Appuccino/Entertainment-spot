@@ -4,6 +4,13 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+
+/**
+ * Retrofit interface for Watchmode endpoints: search by TMDb ID,
+ * fetch title details (IMDb rating), and fetch streaming sources.
+ *
+ **/
+
 interface WatchmodeApiService {
     @GET("search/")
     suspend fun searchByTmdbId(

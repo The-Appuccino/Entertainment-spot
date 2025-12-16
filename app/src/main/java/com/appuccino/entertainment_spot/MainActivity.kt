@@ -8,6 +8,11 @@ import androidx.lifecycle.lifecycleScope
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.coroutines.launch
 
+/**
+ * App’s single activity host: contains the BottomNavigationView,
+ * sets the default fragment (Movies list), and swaps fragments in R.id.nav_host
+ * when the user taps Movies / Series / Search.
+ * */
 class MainActivity : AppCompatActivity() {
     // Fragments declared once for reuse
     //private val entertainmentListFragment = EntertainmentListFragment()
@@ -19,7 +24,7 @@ class MainActivity : AppCompatActivity() {
 
         // Run once on startup
 //        lifecycleScope.launch {
-//            FirestoreDataUploader.uploadPopularMovies()
+//            //FirestoreDataUploader.uploadPopularMovies()
 //            FirestoreDataUploader.uploadPopularSeries()
 //        }
 
