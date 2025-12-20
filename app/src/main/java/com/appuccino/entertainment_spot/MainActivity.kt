@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_movies -> EntertainmentListFragment.newInstance(EntertainmentListFragment.TYPE_MOVIE)
                 R.id.nav_series -> EntertainmentListFragment.newInstance(EntertainmentListFragment.TYPE_SERIES) // update if you add a separate fragment later
                 R.id.nav_search -> EntertainmentSearchFragment()
+                R.id.nav_favorite_list -> EntertainmentFavoriteListFragment()
                 //R.id.nav_detail -> entertainmentDetailFragment
                 else -> entertainmentDetailFragment
             }
