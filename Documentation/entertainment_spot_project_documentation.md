@@ -34,7 +34,7 @@ EntertainmentDetailFragment
 
 ### Activities
 
-#### SplashActivity.kt
+#### StartScreenActivity.kt
 Displays a splash screen on app launch, waits briefly using a coroutine, then launches `MainActivity`. Prevents back navigation to splash.
 
 #### MainActivity.kt
@@ -168,7 +168,7 @@ Watchmode-specific response DTOs:
 
 ### Activities
 
-#### activity_spash_screen.xml
+#### activity_start_screen.xml
 Splash screen UI with centered icon and background color.
 
 #### activity_main.xml

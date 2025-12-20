@@ -25,6 +25,8 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTube
  **/
 
 class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_detail) {
+
+    // Helper function to format the date
     private fun formatDate(isoDate: String): String {
         return try {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
@@ -33,6 +35,22 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
             outputFormat.format(date!!)
         } catch (e: Exception) {
             isoDate // fallback to original if parsing fails
+        }
+    }
+
+    //Function that allows a user to use the bookmark button icon to save media to a list
+    private fun setupBookmarkToggle(view: View) {
+        val bookmarkButton = view.findViewById<ImageButton>(R.id.bookmarkButton)
+        var isBookmarked = false
+        bookmarkButton.setOnClickListener {
+            isBookmarked = !isBookmarked
+
+            bookmarkButton.setImageResource(
+                if (isBookmarked)
+                    R.drawable.ic_baseline_bookmark_24
+                else
+                    R.drawable.ic_baseline_bookmark_border_24
+            )
         }
     }
 
@@ -73,10 +91,15 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
         val genreTextView = view.findViewById<TextView>(R.id.genreTextView)
         val platformNames = view.findViewById<TextView>(R.id.platformName)
 
+        //Allows user to go back to the previous screen using the back arrow button icon
         val backButton = view.findViewById<ImageButton>(R.id.backButton)
         backButton.setOnClickListener{
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
+
+        //call to allow bookmarking of media
+        setupBookmarkToggle(view)
+
 
         arguments?.getString(ARG_MOVIE)?.let { json ->
             val movie = Json.decodeFromString<Movie>(json)

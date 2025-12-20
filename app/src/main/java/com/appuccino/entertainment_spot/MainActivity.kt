@@ -16,6 +16,11 @@ import kotlinx.coroutines.launch
 class MainActivity : AppCompatActivity() {
     // Fragments declared once for reuse
     //private val entertainmentListFragment = EntertainmentListFragment()
+
+    /**
+     * for temporarily displaying a screen for any un-implemented navigation screens
+     * since "when" expression in the bottomNavigationView.requires an else branch.
+    **/
     private val entertainmentDetailFragment = EntertainmentDetailFragment()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,6 +47,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_series -> EntertainmentListFragment.newInstance(EntertainmentListFragment.TYPE_SERIES) // update if you add a separate fragment later
                 R.id.nav_search -> EntertainmentSearchFragment()
                 R.id.nav_favorite_list -> EntertainmentFavoriteListFragment()
+                R.id.nav_settings -> EntertainmentSettingsFragment()
                 //R.id.nav_detail -> entertainmentDetailFragment
                 else -> entertainmentDetailFragment
             }
