@@ -1,6 +1,5 @@
 package com.appuccino.entertainment_spot
 
-import android.content.ContentValues.TAG
 import android.content.Intent
 import android.util.Log
 import android.widget.Toast
@@ -26,6 +25,8 @@ class StartScreenActivity : AppCompatActivity() {
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth
 
+    private var navigated = false
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
@@ -35,12 +36,6 @@ class StartScreenActivity : AppCompatActivity() {
         // Initialize Firebase Auth
         auth = Firebase.auth
 
-        // wait 3 seconds using coroutine
-        lifecycleScope.launch {
-            delay(2000)
-            startActivity(Intent(this@StartScreenActivity, MainActivity::class.java))
-            finish() // optionally finish so the user can't go back to splash
-        }
     }
 
     // [START on_start_check_user]
@@ -48,7 +43,15 @@ class StartScreenActivity : AppCompatActivity() {
         super.onStart()
         // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = auth.currentUser
-        updateUI(currentUser)
+        //updateUI(currentUser)
+        if (currentUser != null) {
+            Log.d(TAG, "Already signed in. uid=${currentUser?.uid}, anon=${currentUser?.isAnonymous}")
+            goToMainActivityScreen()
+        } else {
+            Log.d(TAG, "No user yet. Signing in anonymously…")
+            signInAnonymously()
+        }
+
     }
 
     private fun signInAnonymously() {
@@ -56,10 +59,11 @@ class StartScreenActivity : AppCompatActivity() {
         auth.signInAnonymously()
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInAnonymously:success")
                     val user = auth.currentUser
-                    updateUI(user)
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInAnonymously:success uid=${user?.uid}")
+                    goToMainActivityScreen()
+                    //updateUI(user)
                 } else {
                     // If sign in fails, display a message to the user.
                     Log.w(TAG, "signInAnonymously:failure", task.exception)
@@ -68,10 +72,20 @@ class StartScreenActivity : AppCompatActivity() {
                         "Authentication failed.",
                         Toast.LENGTH_SHORT,
                     ).show()
-                    updateUI(null)
+                    //updateUI(null)
                 }
             }
     }
+
+    // wait 3 seconds using coroutine
+    private fun goToMainActivityScreen() {
+        lifecycleScope.launch {
+            delay(2000)
+            startActivity(Intent(this@StartScreenActivity, MainActivity::class.java))
+            finish() // optionally finish so the user can't go back to splash
+        }
+    }
+
     private fun updateUI(user: FirebaseUser?) {
     }
 
