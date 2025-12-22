@@ -47,7 +47,7 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
 
             bookmarkButton.setImageResource(
                 if (isBookmarked)
-                    R.drawable.ic_baseline_bookmark_24
+                    R.drawable.ic_baseline_bookmark_added_24
                 else
                     R.drawable.ic_baseline_bookmark_border_24
             )
