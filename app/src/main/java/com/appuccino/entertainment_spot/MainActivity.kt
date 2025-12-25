@@ -23,17 +23,26 @@ class MainActivity : AppCompatActivity() {
     **/
     private val entertainmentDetailFragment = EntertainmentDetailFragment()
 
+
+    /** Function to takes the fireStoreDataUploader file and launches the coroutine
+     *  and to gets pulls from the api sources and uploads to the firestore database.
+     */
+    private fun fireStoreUploader() {
+        val upload = FirestoreDataUploader
+        lifecycleScope.launch {
+            upload.uploadPopularMovies()
+            upload.uploadPopularSeries()
+        }
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Run once on startup
-//        lifecycleScope.launch {
-//            //FirestoreDataUploader.uploadPopularMovies()
-//            FirestoreDataUploader.uploadPopularSeries()
-//        }
+        //call the function to upload data to firestore
+        //fireStoreUploader()
 
-
+        // Bottom Navigation
         val bottomNavigationView = findViewById<BottomNavigationView>(R.id.bottom_navigation)
 
         // Set default fragment
