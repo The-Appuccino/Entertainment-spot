@@ -172,9 +172,9 @@ object FirestoreFavoriteListExchange {
 
 
     /**
-     * Real-time listener for the entire favorites list:
+     * Real-time listener for ALL favorites (movies + series together)
      *
-     * Listens to: users/{uid}/favorites (the whole collection)
+     * Listens to: users/{uid}/favorites (entire collection)
      * Whenever something is added/removed/changed, onChanged gets a fresh List<FavoriteItem>.
      *
      * Returns ListenerRegistration so you can remove it in onStop/onDestroyView.
@@ -183,46 +183,25 @@ object FirestoreFavoriteListExchange {
         onChanged: (List<FavoriteItem>) -> Unit,
         onError: (Exception) -> Unit = {}
     ): ListenerRegistration? {
-        // If not signed in, we can't read favorites. Return null = no listener.
         val uid = uidOrNull() ?: return null
 
-        // Add a real-time listener to the favorites collection.
         return favoritesCol(uid)
             .addSnapshotListener { snap, err ->
-                // Handle Firestore errors.
                 if (err != null) {
                     onError(err)
                     return@addSnapshotListener
                 }
 
-                // Convert the returned snapshot documents into FavoriteItem objects.
-                // We do manual mapping instead of doc.toObject(FavoriteItem::class.java)
-                // because Kotlin data classes + default values can sometimes behave unexpectedly.
                 val items = snap?.documents?.mapNotNull { doc ->
-                    // Read each field from Firestore doc.
-                    // If the required fields are missing, we skip this doc by returning null.
-
-                    // required; if missing, skip this favorite
-                    val type = doc.getString("type") ?: return@mapNotNull null
-
-                    // required; stored as Long in Firestore, converted to Int for your model
+                    val t = doc.getString("type") ?: return@mapNotNull null
                     val tmdbId = (doc.getLong("tmdbId") ?: return@mapNotNull null).toInt()
-
-                    // optional; if missing, just use empty string
                     val title = doc.getString("title") ?: ""
-
-                    // optional; if missing, empty string
                     val posterUrl = doc.getString("posterUrl") ?: ""
-
-                    // optional; if missing, imdbRating becomes null
                     val imdbRating = doc.getDouble("imdbRating")
-
-                    // optional; if missing, use 0L
                     val createdAt = doc.getLong("createdAt") ?: 0L
 
-                    // Build the FavoriteItem object from the fields above.
                     FavoriteItem(
-                        type = type,
+                        type = t,
                         tmdbId = tmdbId,
                         title = title,
                         posterUrl = posterUrl,
@@ -230,10 +209,10 @@ object FirestoreFavoriteListExchange {
                         createdAt = createdAt
                     )
                 } ?: emptyList()
-                // If snap is null, we default to an empty list.
 
-                // Send the latest favorites list back to the UI layer.
                 onChanged(items)
             }
     }
+
+
 }

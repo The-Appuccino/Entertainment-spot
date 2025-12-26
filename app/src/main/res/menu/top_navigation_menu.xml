@@ -3,21 +3,21 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <!-- This shows as text next to the kebab -->
-    <item
-        android:id="@+id/menu_selected_type_label"
-        android:title="TODO"
-        app:showAsAction="always"
-        app:actionLayout="@layout/menu_selected_type_label"
-        />
+<!--    <item-->
+<!--        android:id="@+id/menu_selected_type_label"-->
+<!--        android:title="TODO"-->
+<!--        app:showAsAction="always"-->
+<!--        app:actionLayout="@layout/menu_selected_type_label"-->
+<!--        />-->
 
-    <item android:id="@+id/menu_favorite_movies"
-        android:enabled="true"
-        android:title="Movies"
-        />
+<!--    <item android:id="@+id/menu_favorite_movies"-->
+<!--        android:enabled="true"-->
+<!--        android:title="Movies"-->
+<!--        />-->
 
-    <item
-        android:id="@+id/menu_favorite_tv"
-        android:title="TV Shows"
-        />
+<!--    <item-->
+<!--        android:id="@+id/menu_favorite_tv"-->
+<!--        android:title="TV Shows"-->
+<!--        />-->
 
 </menu>
