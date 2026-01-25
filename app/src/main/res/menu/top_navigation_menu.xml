@@ -1,12 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <item
-        android:id="@+id/dropdown_arrow_icon"
-        android:enabled="true"
-        android:title="Genre"
-        android:icon="@drawable/ic_baseline_arrow_drop_down_24"
-        />
+    <!-- This shows as text next to the kebab -->
+<!--    <item-->
+<!--        android:id="@+id/menu_selected_type_label"-->
+<!--        android:title="TODO"-->
+<!--        app:showAsAction="always"-->
+<!--        app:actionLayout="@layout/menu_selected_type_label"-->
+<!--        />-->
+
+<!--    <item android:id="@+id/menu_favorite_movies"-->
+<!--        android:enabled="true"-->
+<!--        android:title="Movies"-->
+<!--        />-->
+
+<!--    <item-->
+<!--        android:id="@+id/menu_favorite_tv"-->
+<!--        android:title="TV Shows"-->
+<!--        />-->
 
 </menu>

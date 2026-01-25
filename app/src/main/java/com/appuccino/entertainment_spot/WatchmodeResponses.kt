@@ -3,6 +3,14 @@ package com.appuccino.entertainment_spot
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * Watchmode response models:
+ * search results mapping Watchmode ID + IMDb ID
+ * title details (IMDb rating, critic score)
+ * streaming source entries.
+ *
+ **/
+
 @Serializable
 data class WatchmodeSearchResult(
     @SerialName("id") val watchmodeId: Int,

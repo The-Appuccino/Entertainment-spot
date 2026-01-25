@@ -4,6 +4,12 @@ import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
 
+/**
+ * Retrofit interface for TMDb endpoints used by your uploader:
+ * popular lists, details, credits, videos, release dates (movies + series).
+ *
+ **/
+
 interface TmdbApiService {
     @GET("movie/popular")
     suspend fun getPopularMovies(

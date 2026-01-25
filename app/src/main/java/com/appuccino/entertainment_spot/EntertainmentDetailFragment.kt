@@ -1,6 +1,8 @@
 package com.appuccino.entertainment_spot
 
 import android.os.Bundle
+import android.util.Log
+import com.google.firebase.firestore.ListenerRegistration
 import android.view.View
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -17,7 +19,24 @@ import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.listeners.Abs
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.YouTubePlayer
 import com.pierfrancescosoffritti.androidyoutubeplayer.core.player.views.YouTubePlayerView
 
+
+/**
+ *Detail screen for either a Movie or Series. Receives the object via JSON args (ARG_MOVIE / ARG_SERIES),
+ * populates UI (title, genre, summary, runtime/seasons, rating, release date, platforms),
+ * shows cast in a horizontal RecyclerView, and cues the YouTube trailer.
+ **/
+
+
 class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_detail) {
+
+    // Holds a live Firestore listener so we can stop it when the Fragment view goes away.
+    private var favoriteListener: ListenerRegistration? = null
+
+    // Firestore-backed favorite state for the currently displayed item.
+    private var isBookmarked: Boolean = false
+
+
+    // Helper function to format the date
     private fun formatDate(isoDate: String): String {
         return try {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.US)
@@ -29,9 +48,83 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
         }
     }
 
+
+
+
+    private fun bindBookmarkBehavior(
+        view: View,
+        type: String,
+        tmdbId: Int,
+        title: String,
+        posterUrl: String,
+        imdbRating: Double?
+    ) {
+        val bookmarkButton = view.findViewById<ImageButton>(R.id.bookmarkButton)
+
+        // 1) Start listening to Firestore to know if this item is currently favorited
+        // Remove any previous listener first (important when fragment is reused)
+        favoriteListener?.remove()
+        favoriteListener = FirestoreFavoriteListExchange.listenIsFavorited(
+            type = type,
+            tmdbId = tmdbId,
+            onChanged = { favorited ->
+                // Firestore is the source of truth
+                isBookmarked = favorited
+
+                // Update icon based on Firestore state
+                bookmarkButton.setImageResource(
+                    if (favorited) R.drawable.ic_baseline_bookmark_added_24
+                    else R.drawable.ic_baseline_bookmark_border_24
+                )
+            },
+            onError = { e ->
+                Log.w("DetailFragment", "listenIsFavorited error", e)
+            }
+        )
+
+        // 2) Toggle favorite on click
+        bookmarkButton.setOnClickListener {
+            if (isBookmarked) {
+                // Remove favorite doc
+                FirestoreFavoriteListExchange.removeFavorite(type, tmdbId) { success, error ->
+                    if (!success) {
+                        Log.w("DetailFragment", "removeFavorite failed", error)
+                    }
+                    // No need to manually flip icon here — the listener will update it.
+                }
+            } else {
+                // Add favorite doc (thin model: only what list needs)
+                val favoriteItem = FavoriteItem(
+                    type = type,
+                    tmdbId = tmdbId,
+                    title = title,
+                    posterUrl = posterUrl,
+                    imdbRating = imdbRating,
+                    createdAt = 0L // Exchange will fill it if 0
+                )
+
+                FirestoreFavoriteListExchange.addFavorite(favoriteItem) { success, error ->
+                    if (!success) {
+                        Log.w("DetailFragment", "addFavorite failed", error)
+                    }
+                    // Listener will update icon.
+                }
+            }
+        }
+    }
+
+
     companion object {
+        // Fragment arg keys
         private const val ARG_MOVIE = "movie"
         private const val ARG_SERIES = "series"
+
+        // Favorite type constants (keep consistent across app + Firestore)
+        private const val TYPE_MOVIE = "movie"
+        private const val TYPE_SERIES = "series"
+
+        // Logging tag
+        private const val TAG = "EntertainmentDetail"
 
         fun newInstance(movie: Movie): EntertainmentDetailFragment {
             val args = Bundle().apply {
@@ -51,6 +144,8 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+        // Set up RecyclerView for cast
         val castRecyclerView = view.findViewById<RecyclerView>(R.id.castRecyclerView)
 
         val youTubePlayerView = view.findViewById<YouTubePlayerView>(R.id.youtubePlayerView)
@@ -66,13 +161,28 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
         val genreTextView = view.findViewById<TextView>(R.id.genreTextView)
         val platformNames = view.findViewById<TextView>(R.id.platformName)
 
+
+        //Allows user to go back to the previous screen using the back arrow button icon
         val backButton = view.findViewById<ImageButton>(R.id.backButton)
         backButton.setOnClickListener{
             requireActivity().onBackPressedDispatcher.onBackPressed()
         }
 
+
         arguments?.getString(ARG_MOVIE)?.let { json ->
             val movie = Json.decodeFromString<Movie>(json)
+
+            // Bookmark integration (Firestore-backed)
+            bindBookmarkBehavior(
+                view = view,
+                type = TYPE_MOVIE,
+                tmdbId = movie.tmdbId,
+                title = movie.title,
+                posterUrl = movie.posterUrl,
+                imdbRating = movie.imdbRating
+            )
+
+
             titleTextView.text = movie.title
             //ratingTextView.text = movie.imdbRating?.toString() ?: "N/A"
             genreTextView.text = movie.genres.joinToString(", ") { it.name}
@@ -105,6 +215,18 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
 
         arguments?.getString(ARG_SERIES)?.let { json ->
             val series = Json.decodeFromString<Series>(json)
+
+            // Bookmark integration (Firestore-backed)
+            bindBookmarkBehavior(
+                view = view,
+                type = TYPE_SERIES,
+                tmdbId = series.tmdbId,
+                title = series.name,          // normalize to "title" in FavoriteItem
+                posterUrl = series.posterUrl,
+                imdbRating = series.imdbRating
+            )
+
+
             titleTextView.text = series.name
             //ratingTextView.text = series.imdbRating?.toString() ?: "N/A"
             genreTextView.text = series.genres.joinToString(", ") { it.name}
@@ -136,72 +258,12 @@ class EntertainmentDetailFragment : Fragment(R.layout.fragment_entertainment_det
         }
 
     }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+
+        // Stop listening when the view is destroyed to avoid leaks and duplicate listeners.
+        favoriteListener?.remove()
+        favoriteListener = null
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//import android.os.Bundle
-//import android.view.View
-//import android.widget.ImageView
-//import android.widget.TextView
-//import androidx.fragment.app.Fragment
-//
-//class EntertainmentDetailFragment: Fragment(R.layout.fragment_entertainment_detail) {
-//
-//    companion object {
-//        private const val ARG_TITLE = "title"
-//        private const val ARG_IMAGE = "image"
-//        private const val ARG_RATING = "rating"
-//
-//        fun newInstance(item: EntertainmentItem): EntertainmentDetailFragment {
-//            val args = Bundle().apply {
-//                putString(ARG_TITLE, item.title)
-//                putInt(ARG_IMAGE, item.imageResId)
-//                putFloat(ARG_RATING, item.imdbRating)
-//            }
-//            return EntertainmentDetailFragment().apply {
-//                arguments = args
-//            }
-//        }
-//    }
-//
-//    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-//        super.onViewCreated(view, savedInstanceState)
-//
-//        val title = arguments?.getString(ARG_TITLE)
-//        val imageRes = arguments?.getInt(ARG_IMAGE)
-//        val rating = arguments?.getFloat(ARG_RATING)
-//
-//        view.findViewById<TextView>(R.id.titleTextView).text = title
-//        view.findViewById<ImageView>(R.id.posterImageView).setImageResource(imageRes ?: 0)
-//        view.findViewById<ImageView>(R.id.backgroundImageView).setImageResource(imageRes ?: 0)
-//        view.findViewById<TextView>(R.id.ratingTextView).text = rating.toString()
-//    }
-//}
