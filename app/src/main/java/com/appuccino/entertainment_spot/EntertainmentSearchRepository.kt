@@ -6,154 +6,56 @@ import kotlinx.coroutines.tasks.await
 /**
  * EntertainmentSearchRepository
  *
- * Acts as the **data access layer** for search functionality.
+ * What this file is responsible for
+ * - Acts as the single “data access” entry point for searching entertainment titles.
+ * - Owns the logic for:
+ *    - calling Meilisearch
+ *    - translating Meilisearch response ("hits") into app-friendly objects (SearchRowItem)
+ *    - handling errors in a consistent way (exceptions, empty results, logging)
  *
- * This class is responsible for **retrieving search data** from data sources,
- * primarily Firebase Firestore, and returning domain models (`Movie`, `Series`).
+ * Why a repository exists (instead of calling Retrofit from the Fragment)
+ * - Keeps networking + mapping out of UI code.
+ * - Makes it easier to change the data source later (Meilisearch local -> Meilisearch cloud,
+ *   or Meilisearch -> another search provider) without rewriting UI.
+ * - Gives you one place to normalize “movie vs series” and unify the result list.
  *
- *  Responsibilities:
- *  - Execute Firestore queries for movies and series
- *  - Apply query constraints (where clauses, ordering, limits)
- *  - Map Firestore documents into Kotlin data models
+ * Inputs / Outputs
+ * - Input: raw query text (title search)
+ * - Output: List<SearchRowItem> that your RecyclerView can render (movies + series together)
  *
+ * Typical internal steps
+ * 1) Build request (q, limit, optional params)
+ * 2) Call api.search(indexUid, request)
+ * 3) Map each hit:
+ *    - determine ContentType (MOVIE / SERIES)
+ *    - extract tmdbId, title, posterUrl, rating, etc.
+ * 4) Return a flat list for the UI
+ *
+ * Notes for your current local setup
+ * - If your Meilisearch index stores both movies + series in the same index, repository just
+ *   maps and returns a combined list
  */
+
 
 class EntertainmentSearchRepository(
-    private val db: FirebaseFirestore = FirebaseFirestore.getInstance()
+    private val meili: MeilisearchApiService = RetrofitClient.meiliService,
+    private val db: FirebaseFirestore = FirebaseFirestore.getInstance(),
+    private val indexUid: String = "entertainment",
 ) {
 
-
-    /* ============================
- *  BASIC TITLE SEARCH
- * ============================
- */
-
-    /**
-     * Search movies by title.
-     *
-     * @param query User-entered search string (already normalized)
-     * @return List of matching Movie objects
-     */
-    suspend fun searchMoviesByTitle(query: String): List<Movie> {
-        TODO("Firestore title search for movies")
+    suspend fun searchTitle(query: String, limit: Int = 30): List<MeiliEntertainmentDoc> {
+        val q = query.trim()
+        if (q.isBlank()) return emptyList()
+        return meili.search(indexUid, MeiliSearchRequest(q = q, limit = limit)).hits
     }
 
-    /**
-     * Search TV series by title.
-     *
-     * @param query User-entered search string (already normalized)
-     * @return List of matching Series objects
-     */
-    suspend fun searchSeriesByTitle(query: String): List<Series> {
-        TODO("Firestore title search for series")
+    suspend fun getMovieByTmdbId(tmdbId: Int): Movie? {
+        val snap = db.collection("movies").document(tmdbId.toString()).get().await()
+        return snap.toObject(Movie::class.java)
     }
 
-
-//    /* ============================
-// *  GENRE-BASED SEARCH
-// * ============================
-// */
-//
-//    /**
-//     * Search movies by genre name.
-//     *
-//     * @param genre Genre name (e.g. \"Action\", \"Drama\")
-//     */
-//    suspend fun searchMoviesByGenre(genre: String): List<Movie> {
-//        TODO("Firestore genre search for movies")
-//    }
-//
-//    /**
-//     * Search series by genre name.
-//     *
-//     * @param genre Genre name (e.g. \"Sci-Fi\")
-//     */
-//    suspend fun searchSeriesByGenre(genre: String): List<Series> {
-//        TODO("Firestore genre search for series")
-//    }
-//
-//
-//    /* ============================
-//     *  YEAR / DATE SEARCH
-//     * ============================
-//     */
-//
-//    /**
-//     * Search movies released in a specific year.
-//     */
-//    suspend fun searchMoviesByYear(year: Int): List<Movie> {
-//        TODO("Firestore year-based movie search")
-//    }
-//
-//    /**
-//     * Search series first aired in a specific year.
-//     */
-//    suspend fun searchSeriesByYear(year: Int): List<Series> {
-//        TODO("Firestore year-based series search")
-//    }
-//
-//
-//    /* ============================
-//     *  RATING-BASED SEARCH
-//     * ============================
-//     */
-//
-//    /**
-//     * Search movies with IMDb rating >= minRating.
-//     */
-//    suspend fun searchMoviesByMinRating(minRating: Double): List<Movie> {
-//        TODO("Firestore rating filter for movies")
-//    }
-//
-//    /**
-//     * Search series with IMDb rating >= minRating.
-//     */
-//    suspend fun searchSeriesByMinRating(minRating: Double): List<Series> {
-//        TODO("Firestore rating filter for series")
-//    }
-//
-//
-//    /* ============================
-//     *  PLATFORM SEARCH
-//     * ============================
-//     */
-//
-//    /**
-//     * Search movies available on a specific streaming platform.
-//     *
-//     * Example: Netflix, Prime Video, Apple TV
-//     */
-//    suspend fun searchMoviesByPlatform(platform: String): List<Movie> {
-//        TODO("Firestore platform search for movies")
-//    }
-//
-//    /**
-//     * Search series available on a specific streaming platform.
-//     */
-//    suspend fun searchSeriesByPlatform(platform: String): List<Series> {
-//        TODO("Firestore platform search for series")
-//    }
-//
-//
-//    /* ============================
-//     *  COMPOSITE / ADVANCED SEARCH
-//     * ============================
-//     */
-//
-//    /**
-//     * Execute a composite search using a structured SearchSpec.
-//     *
-//     * This is the primary method the UseCase will call once
-//     * voice/LLM parsing is introduced.
-//     */
-//    suspend fun searchMovies(spec: SearchSpec): List<Movie> {
-//        TODO("Composite Firestore movie search using SearchSpec")
-//    }
-//
-//    /**
-//     * Execute a composite search for series using a structured SearchSpec.
-//     */
-//    suspend fun searchSeries(spec: SearchSpec): List<Series> {
-//        TODO("Composite Firestore series search using SearchSpec")
-//    }
+    suspend fun getSeriesByTmdbId(tmdbId: Int): Series? {
+        val snap = db.collection("series").document(tmdbId.toString()).get().await()
+        return snap.toObject(Series::class.java)
+    }
 }

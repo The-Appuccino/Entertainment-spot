@@ -91,6 +91,9 @@ dependencies {
 
     implementation ("com.pierfrancescosoffritti.androidyoutubeplayer:core:13.0.0")
 
+    // Allows use of task.await()
+    implementation("org.jetbrains.kotlinx:kotlinx-coroutines-play-services:1.10.2")
+
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.3.0")
