@@ -6,3 +6,6 @@ A place to discover and build a collection of Movies and Series.
 
 ### App demo
 <img src= 'https://github.com/The-Appuccino/Entertainment-spot/blob/finish-app-features/WireFrames/app%20features%20demo.gif' title='Video Walkthrough' width='' alt='Video Walkthrough'/>
+
+### System Design
+<img src= 'https://github.com/The-Appuccino/Entertainment-spot/blob/finish-app-features/Documentation/app_system_design.png' title='Video Walkthrough' width='' alt='Video Walkthrough'/>
