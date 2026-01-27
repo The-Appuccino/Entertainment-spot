@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/black"
+    android:background="?attr/colorSurface"
     tools:context=".MainActivity">
 
 <!--    <com.google.android.material.appbar.AppBarLayout-->
@@ -16,9 +16,9 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/nav_host"
-        android:layout_width="410dp"
-        android:layout_height="648dp"
-        android:background="@color/black"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="?attr/colorSurface"
         app:defaultNavHost="true"
         app:layout_constraintBottom_toTopOf="@id/bottom_navigation"
         app:layout_constraintEnd_toEndOf="parent"
@@ -28,10 +28,9 @@
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_navigation"
-        android:layout_width="405dp"
-        android:layout_height="78dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="4dp"
         android:background="@drawable/bg_bottom_nav"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

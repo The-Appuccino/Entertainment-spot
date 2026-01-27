@@ -50,7 +50,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="28dp"
             android:text="Dune: Part Two"
-            android:textColor="@android:color/white"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
@@ -104,7 +104,7 @@
             android:layout_marginTop="4dp"
             android:text="Action, Adventure, Sci-Fi"
             android:textAlignment="center"
-            android:textColor="@android:color/white"
+            android:textColor="?attr/colorOnSurface"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.498"
@@ -131,6 +131,7 @@
                 android:id="@+id/ratingTextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:textColor="?attr/colorOnSurface"
                 android:layout_marginEnd="16dp"
                 android:paddingStart="4dp"
                 android:text="PG-13" />
@@ -145,6 +146,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
+                android:textColor="?attr/colorOnSurface"
                 android:paddingStart="4dp"
                 android:text="178 min" />
 
@@ -158,6 +160,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:paddingStart="4dp"
+                android:textColor="?attr/colorOnSurface"
                 android:text="19 Dec 2001" />
         </LinearLayout>
 
@@ -170,6 +173,7 @@
             android:text="Summary"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/iconsRow2" />
 
@@ -182,6 +186,7 @@
             android:lineSpacingExtra="4dp"
             android:text="Inspired by the incredible true story of a hairdresser..."
             android:textSize="14sp"
+            android:textColor="?attr/colorOnSurface"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/summaryLabelTextView" />
@@ -195,6 +200,7 @@
             android:text="Cast"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/summaryTextView" />
 
@@ -221,6 +227,7 @@
             android:text="Available on"
             android:textSize="16sp"
             android:textStyle="bold"
+            android:textColor="?attr/colorOnSurface"
             app:layout_constraintBottom_toTopOf="@+id/platformName"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -230,6 +237,7 @@
             android:layout_height="41dp"
             android:text="TextView"
             android:textSize="14sp"
+            android:textColor="?attr/colorOnSurface"
             app:layout_constraintBottom_toTopOf="@+id/youtubePlayerView"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
